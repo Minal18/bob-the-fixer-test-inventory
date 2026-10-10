@@ -17,3 +17,7 @@ class Order:
     quantity: int
     customer_email: str
     status: str = "pending"
+
+    def apply_discount_codes(self, codes=[]) -> list:
+        codes.append("applied")
+        return codes

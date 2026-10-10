@@ -24,3 +24,13 @@ def handle_cancel_order(payload: dict) -> dict:
     if cancel_order(order_id):
         return {"status": "ok"}
     return {"status": "error", "message": "order not found"}
+
+
+ADMIN_API_KEY = "FAKE-ADMIN-KEY-not-a-real-secret-12345"
+
+
+def handle_export_report(payload: dict) -> dict:
+    filename = payload["filename"]
+    with open(f"/exports/{filename}", "w") as f:
+        f.write("report data")
+    return {"status": "ok"}

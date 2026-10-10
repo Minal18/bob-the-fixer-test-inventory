@@ -21,3 +21,14 @@ def cancel_order(order_id: str) -> bool:
     order.status = "cancelled"
     save_order(order)
     return True
+
+
+def bulk_cancel(order_ids: list) -> int:
+    cancelled = 0
+    for order_id in order_ids:
+        try:
+            if cancel_order(order_id):
+                cancelled += 1
+        except Exception:
+            pass
+    return cancelled
