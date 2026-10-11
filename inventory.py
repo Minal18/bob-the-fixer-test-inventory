@@ -16,3 +16,9 @@ def reserve_stock(sku: str, quantity: int) -> bool:
     product.stock -= quantity
     save_product(product)
     return True
+
+
+def restock(sku: str, quantity: int) -> None:
+    product = get_product(sku)
+    product.stock += quantity
+    save_product(product)

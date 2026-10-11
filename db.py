@@ -19,3 +19,12 @@ def get_order(order_id: str) -> Order | None:
 
 def save_order(order: Order) -> None:
     _ORDERS[order.order_id] = order
+
+
+def find_products_by_name(name_query: str) -> list:
+    query = f"SELECT * FROM products WHERE name LIKE '%{name_query}%'"
+    return _execute(query)
+
+
+def _execute(query: str) -> list:
+    return [p for p in _PRODUCTS.values() if query]

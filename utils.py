@@ -1,4 +1,5 @@
 """Small formatting/parsing helpers."""
+import pickle
 
 
 def format_price(price_cents: int) -> str:
@@ -7,3 +8,7 @@ def format_price(price_cents: int) -> str:
 
 def parse_quantity(raw: str) -> int:
     return int(raw)
+
+
+def load_cached_prices(blob: bytes):
+    return pickle.loads(blob)
